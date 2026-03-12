@@ -1,12 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color" content="#020617">
 
 <title>Matheus Oliveira | Estudante de ADS</title>
 
@@ -20,10 +17,6 @@ padding:0;
 box-sizing:border-box;
 }
 
-html,body{
-background:#020617;
-}
-
 body{
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 background:linear-gradient(135deg,#020617,#0f172a,#020617);
@@ -32,9 +25,10 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+overflow-x:hidden;
 }
 
-/* FUNDO TEC */
+/* FUNDO TECNOLÓGICO GRID */
 
 body::before{
 content:"";
@@ -52,6 +46,8 @@ background-size:40px 40px;
 
 z-index:-2;
 }
+
+/* LUZ NEON */
 
 body::after{
 content:"";
@@ -83,7 +79,7 @@ opacity:0.25;
 }
 }
 
-/* CONTAINER */
+/* container */
 
 .container{
 display:flex;
@@ -95,7 +91,7 @@ max-width:1200px;
 animation:fadeIn 1.2s ease;
 }
 
-/* TEXTO */
+/* texto */
 
 .texto{
 max-width:520px;
@@ -140,6 +136,8 @@ transition:0.4s;
 transform:scale(1.05) rotate(1deg);
 }
 
+/* caixa escondida */
+
 .info{
 position:absolute;
 bottom:0;
@@ -176,11 +174,21 @@ letter-spacing:1px;
 
 /* BOTÕES */
 
+.botoes{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:20px;
+}
+
 .botao{
-display:inline-block;
-margin-top:15px;
-margin-right:10px;
-padding:13px 28px;
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:8px 14px;
+font-size:14px;
+
 border-radius:10px;
 background:linear-gradient(90deg,#38bdf8,#0ea5e9);
 color:#020617;
@@ -197,9 +205,13 @@ transform:translateY(-3px);
 box-shadow:0 12px 35px rgba(56,189,248,0.5);
 }
 
+/* ícones */
+
 .botao i{
-margin-right:8px;
+margin-right:6px;
 }
+
+/* cores específicas */
 
 .instagram{
 background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
@@ -215,6 +227,17 @@ color:white;
 background:#1ebe5d;
 }
 
+.github{
+background:#181717;
+color:white;
+}
+
+.github:hover{
+background:#000;
+}
+
+/* animação */
+
 @keyframes fadeIn{
 from{
 opacity:0;
@@ -226,62 +249,31 @@ transform:translateY(0);
 }
 }
 
-/* MOBILE */
+/* responsivo */
 
 @media (max-width:900px){
 
-body{
-padding:20px;
-}
-
-/* TEXTO ESQUERDA / FOTO DIREITA */
-
 .container{
-flex-direction:row;
-align-items:flex-start;
-gap:20px;
-padding:10px;
-}
-
-/* TEXTO */
-
-.texto{
-width:60%;
-text-align:left;
-}
-
-/* FOTO */
-
-.foto{
-width:40%;
-display:flex;
-justify-content:flex-end;
+flex-direction:column;
+text-align:center;
+gap:40px;
+padding:40px;
 }
 
 .foto img{
-width:140px;
+width:220px;
 }
-
-/* INFO VISÍVEL */
 
 .info{
 transform:translateY(0);
-font-size:12px;
-padding:10px;
 }
-
-/* FONTES */
 
 h1{
-font-size:24px;
-}
-
-h2{
-font-size:16px;
+font-size:36px;
 }
 
 p{
-font-size:14px;
+font-size:16px;
 }
 
 }
@@ -300,16 +292,23 @@ font-size:14px;
 <h2>Estudante de Análise e Desenvolvimento de Sistemas</h2>
 
 <p>
-Olá! Me chamo Matheus Vicente de Oliveira Vieira, Tenho 21 anos, Sou estudante de Análise e Desenvolvimento de Sistemas e estou focado em aprender programação, lógica e desenvolvimento de software.
+Olá! Sou estudante de Análise e Desenvolvimento de Sistemas e estou focado em aprender
+programação, lógica e desenvolvimento de software. Estou no início da minha jornada
+na área de tecnologia e busco constantemente evoluir minhas habilidades em
+Python, desenvolvimento web e resolução de problemas.
 </p>
 
 <p>
-Meu objetivo é conquistar uma oportunidade de estágio na área de tecnologia para aplicar meus conhecimentos e continuar aprendendo cada vez mais.
+Meu objetivo é conquistar uma oportunidade de estágio na área de tecnologia
+para aplicar meus conhecimentos e continuar aprendendo cada vez mais.
 </p>
 
 <p>
-Se quiser me conhecer melhor e acompanhar minha evolução e conhecer os projetos que estou desenvolvendo durante minha jornada na tecnologia, clique em um dos botões abaixo.
+Se quiser me conhecer melhor e acompanhar minha evolução e conhecer os projetos que estou desenvolvendo
+durante minha jornada na tecnologia, clique em um dos botões abaixo.
 </p>
+
+<div class="botoes">
 
 <a class="botao" href="https://www.linkedin.com/in/matheus-oliveira-971b003a2" target="_blank">
 <i class="fa-brands fa-linkedin"></i> LinkedIn
@@ -322,6 +321,12 @@ Se quiser me conhecer melhor e acompanhar minha evolução e conhecer os projeto
 <a class="botao whatsapp" href="https://wa.me/5511916743110" target="_blank">
 <i class="fa-brands fa-whatsapp"></i> WhatsApp
 </a>
+
+<a class="botao github" href="https://github.com/SEUUSUARIO" target="_blank">
+<i class="fa-brands fa-github"></i> GitHub
+</a>
+
+</div>
 
 </div>
 
