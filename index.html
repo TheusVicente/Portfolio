@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020617">
 
 <title>Matheus Oliveira | Estudante de ADS</title>
 
@@ -18,24 +18,9 @@ padding:0;
 box-sizing:border-box;
 }
 
-/* CORREÇÃO DAS BORDAS */
-
-html, body{
-margin:0;
-padding:0;
-width:100%;
-height:100%;
-background:#020617;
-overflow-x:hidden;
-}
-
-/* FUNDO COM GRADIENTE ANIMADO */
-
 body{
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background:linear-gradient(-45deg,#020617,#0f172a,#020617,#020617);
-background-size:400% 400%;
-animation:gradientMove 15s ease infinite;
+background:linear-gradient(135deg,#020617,#0f172a,#020617);
 color:white;
 min-height:100vh;
 display:flex;
@@ -44,13 +29,7 @@ justify-content:center;
 overflow-x:hidden;
 }
 
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* GRID TECNOLÓGICO */
+/* FUNDO TECNOLÓGICO GRID */
 
 body::before{
 content:"";
@@ -61,12 +40,12 @@ width:100%;
 height:100%;
 
 background:
-linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
+linear-gradient(rgba(56,189,248,0.06) 1px, transparent 1px),
+linear-gradient(90deg, rgba(56,189,248,0.06) 1px, transparent 1px);
 
 background-size:40px 40px;
 
-z-index:-3;
+z-index:-2;
 }
 
 /* LUZ NEON */
@@ -87,7 +66,7 @@ filter:blur(120px);
 
 animation:pulse 6s infinite alternate;
 
-z-index:-4;
+z-index:-3;
 }
 
 @keyframes pulse{
@@ -99,18 +78,6 @@ to{
 transform:translate(-50%,-50%) scale(1.3);
 opacity:0.25;
 }
-}
-
-/* CANVAS PARTÍCULAS */
-
-#particles{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:-2;
 }
 
 /* container */
@@ -317,8 +284,6 @@ font-size:16px;
 
 <body>
 
-<canvas id="particles"></canvas>
-
 <div class="container">
 
 <div class="texto">
@@ -378,57 +343,6 @@ Future Software Developer 💻
 </div>
 
 </div>
-
-<script>
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles=[];
-
-for(let i=0;i<90;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2,
-speedX:(Math.random()-0.5)*0.6,
-speedY:(Math.random()-0.5)*0.6
-});
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-
-p.x+=p.speedX;
-p.y+=p.speedY;
-
-if(p.x<0||p.x>canvas.width) p.speedX*=-1;
-if(p.y<0||p.y>canvas.height) p.speedY*=-1;
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fillStyle="rgba(56,189,248,0.7)";
-ctx.fill();
-
-});
-
-requestAnimationFrame(animate);
-}
-
-animate();
-
-window.addEventListener("resize",()=>{
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-});
-
-</script>
 
 </body>
 </html>
