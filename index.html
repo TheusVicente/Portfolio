@@ -131,13 +131,19 @@
 
         .texto { max-width: 520px; width: 100%; }
 
+        /* --- EFEITO CLEAN PULSANTE NO NOME --- */
         h1 {
             font-size: 46px;
             margin-bottom: 10px;
-            background: linear-gradient(90deg,#38bdf8,#0ea5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
             cursor: pointer;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+            animation: neonPulse 3s infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from { text-shadow: 0 0 5px rgba(56, 189, 248, 0.5), 0 0 10px rgba(56, 189, 248, 0.3); }
+            to { text-shadow: 0 0 15px rgba(56, 189, 248, 0.8), 0 0 25px rgba(56, 189, 248, 0.6); }
         }
 
         h2 { margin-bottom: 20px; color: #38bdf8; font-weight: 500; }
@@ -254,7 +260,7 @@
 
 <div class="container">
     <div class="texto">
-        <h1 id="cypher-name" data-value="Matheus Oliveira">Matheus Oliveira</h1>
+        <h1>Matheus Oliveira</h1>
         <h2>Estudante de Análise e Desenvolvimento de Sistemas</h2>
 
         <p>Olá! Sou estudante de Análise e Desenvolvimento de Sistemas e estou focado em aprender programação, lógica e desenvolvimento de software.</p>
@@ -288,24 +294,7 @@
 <script>
     function toggleMenu() { document.getElementById('techMenu').classList.toggle('active'); }
 
-    // Efeito Cypher
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let interval = null;
-    function runCypher() {
-        const target = document.querySelector("#cypher-name");
-        let iteration = 0;
-        clearInterval(interval);
-        interval = setInterval(() => {
-            target.innerText = target.innerText.split("").map((letter, index) => {
-                if(index < iteration) return target.dataset.value[index];
-                return letters[Math.floor(Math.random() * 26)];
-            }).join("");
-            if(iteration >= target.dataset.value.length) clearInterval(interval);
-            iteration += 1 / 3;
-        }, 30);
-    }
-    window.onload = runCypher;
-    document.querySelector("#cypher-name").onmouseover = runCypher;
+    // O SCRIPT DO EFEITO CYPHER FOI REMOVIDO PARA LIMPAR O CÓDIGO
 
     // --- LÓGICA DE PARTÍCULAS ---
     const canvas = document.getElementById('particle-canvas');
@@ -319,7 +308,6 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         particles = [];
-        /* Ajuste de densidade para mobile */
         const density = window.innerWidth < 900 ? 15000 : 9000;
         const numberOfParticles = (canvas.width * canvas.height) / density;
         for (let i = 0; i < numberOfParticles; i++) {
