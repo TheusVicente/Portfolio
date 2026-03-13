@@ -12,7 +12,9 @@
             background: #020617;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            /* CORREÇÃO: Removido o hidden para permitir scroll no mobile */
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         *{
@@ -25,11 +27,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #020617, #0f172a, #020617);
             color: white;
+            /* CORREÇÃO: min-height em vez de height fixo */
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
         }
 
         /* --- MENU CIRCULAR M-O --- */
@@ -139,7 +141,7 @@
         h2 { margin-bottom: 20px; color: #38bdf8; font-weight: 500; }
         p { font-size: 18px; line-height: 1.7; color: #cbd5f5; margin-bottom: 15px; }
 
-        /* --- FOTO (ESTILO ORIGINAL PRESERVADO) --- */
+        /* --- FOTO --- */
         .foto {
             position: relative;
             overflow: hidden;
@@ -196,7 +198,6 @@
         }
         .botao:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(56, 189, 248, 0.5); }
         
-        /* INSTAGRAM ORIGINAL PRESERVADO */
         .instagram {
             background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
             color: white;
@@ -207,12 +208,13 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 900px) {
-            .container { flex-direction: column; text-align: center; padding: 40px; width: 100%; }
+            .container { flex-direction: column; text-align: center; padding: 100px 40px 40px 40px; width: 100%; }
             .foto img { width: 220px; }
             h1 { font-size: 36px; }
             .botoes { justify-content: center; }
             .info { transform: translateY(0); }
-            body { overflow-y: auto; }
+            /* Garante que o body aceite scroll no mobile */
+            body { display: block; overflow-y: auto; }
         }
     </style>
 </head>
@@ -296,27 +298,25 @@
     window.onload = runCypher;
     document.querySelector("#cypher-name").onmouseover = runCypher;
 
-    // --- NOVA LÓGICA DE PARTÍCULAS (MALHA DE DADOS / PLEXUS) ---
+    // --- LÓGICA DE PARTÍCULAS ---
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
     let mouse = { x: null, y: null };
 
-    // Rastreia o mouse
     window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
 
     function init() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         particles = [];
-        // Define a densidade com base no tamanho da tela
         const numberOfParticles = (canvas.width * canvas.height) / 9000;
         for (let i = 0; i < numberOfParticles; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 1, // Velocidade X
-                vy: (Math.random() - 0.5) * 1, // Velocidade Y
+                vx: (Math.random() - 0.5) * 1,
+                vy: (Math.random() - 0.5) * 1,
                 size: Math.random() * 2 + 1
             });
         }
@@ -329,46 +329,26 @@
             p.x += p.vx;
             p.y += p.vy;
 
-            // Rebate nas bordas
             if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
             if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-            // Desenha o ponto (nó)
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             ctx.fillStyle = 'rgba(56, 189, 248, 0.7)';
             ctx.fill();
 
-            // Lógica de Conexão ( Plexus )
             for (let j = i + 1; j < particles.length; j++) {
                 const p2 = particles[j];
                 const dx = p.x - p2.x;
                 const dy = p.y - p2.y;
                 const dist = Math.sqrt(dx*dx + dy*dy);
 
-                // Se estiverem perto, desenha a linha
                 if (dist < 120) {
                     ctx.beginPath();
-                    // A opacidade diminui com a distância
                     ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist/120})`;
                     ctx.lineWidth = 0.8;
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
-                }
-            }
-            
-            // Interação opcional com o mouse (desenha linhas para o mouse)
-            if(mouse.x){
-                const dxMouse = p.x - mouse.x;
-                const dyMouse = p.y - mouse.y;
-                const distMouse = Math.sqrt(dxMouse*dxMouse + dyMouse*dyMouse);
-                if(distMouse < 150){
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${1 - distMouse/150})`;
-                    ctx.lineWidth = 1;
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(mouse.x, mouse.y);
                     ctx.stroke();
                 }
             }
