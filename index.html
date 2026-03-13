@@ -1,373 +1,385 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color" content="#020617">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<title>Matheus Oliveira | Estudante de ADS</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-
-html, body{
-background:#020617;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background:linear-gradient(135deg,#020617,#0f172a,#020617);
-color:white;
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow-x:hidden;
-}
-
-/* FUNDO TECNOLÓGICO GRID */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-
-background:
-linear-gradient(rgba(56,189,248,0.06) 1px, transparent 1px),
-linear-gradient(90deg, rgba(56,189,248,0.06) 1px, transparent 1px);
-
-background-size:40px 40px;
-
-z-index:-2;
-}
-
-/* LUZ NEON */
-
-body::after{
-content:"";
-position:fixed;
-top:50%;
-left:50%;
-width:800px;
-height:800px;
-
-background:radial-gradient(circle,#38bdf8 0%, transparent 70%);
-
-transform:translate(-50%,-50%);
-opacity:0.18;
-filter:blur(120px);
-
-animation:pulse 6s infinite alternate;
-
-z-index:-3;
-}
-
-@keyframes pulse{
-from{
-transform:translate(-50%,-50%) scale(1);
-opacity:0.15;
-}
-to{
-transform:translate(-50%,-50%) scale(1.3);
-opacity:0.25;
-}
-}
-
-/* container */
-
-.container{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:80px;
-padding:60px;
-max-width:1200px;
-animation:fadeIn 1.2s ease;
-}
-
-/* texto */
-
-.texto{
-max-width:520px;
-}
-
-h1{
-font-size:46px;
-margin-bottom:10px;
-background:linear-gradient(90deg,#38bdf8,#0ea5e9);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-h2{
-margin-bottom:20px;
-color:#38bdf8;
-font-weight:500;
-}
-
-p{
-font-size:18px;
-line-height:1.7;
-color:#cbd5f5;
-margin-bottom:15px;
-}
-
-/* FOTO */
-
-.foto{
-position:relative;
-overflow:hidden;
-}
-
-.foto img{
-width:270px;
-border-radius:20px;
-box-shadow:0 20px 60px rgba(0,0,0,0.7);
-transition:0.4s;
-}
-
-.foto:hover img{
-transform:scale(1.05) rotate(1deg);
-}
-
-/* caixa escondida */
-
-.info{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-
-background:rgba(2,6,23,0.95);
-color:#38bdf8;
-
-padding:16px;
-text-align:center;
-
-transform:translateY(100%);
-transition:0.4s;
-
-border-bottom-left-radius:20px;
-border-bottom-right-radius:20px;
-
-font-weight:600;
-}
-
-.foto:hover .info{
-transform:translateY(0);
-}
-
-.info span{
-display:block;
-font-size:14px;
-margin-top:4px;
-color:#cbd5f5;
-font-weight:400;
-letter-spacing:1px;
-}
-
-/* BOTÕES */
-
-.botoes{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-top:20px;
-}
-
-.botao{
-display:flex;
-align-items:center;
-justify-content:center;
-
-padding:8px 14px;
-font-size:14px;
-
-border-radius:10px;
-background:linear-gradient(90deg,#38bdf8,#0ea5e9);
-color:#020617;
-font-weight:600;
-text-decoration:none;
-border:none;
-cursor:pointer;
-transition:0.3s;
-box-shadow:0 8px 25px rgba(56,189,248,0.3);
-}
-
-.botao:hover{
-transform:translateY(-3px);
-box-shadow:0 12px 35px rgba(56,189,248,0.5);
-}
-
-/* ícones */
-
-.botao i{
-margin-right:6px;
-}
-
-/* cores específicas */
-
-.instagram{
-background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-color:white;
-}
-
-.whatsapp{
-background:#25D366;
-color:white;
-}
-
-.whatsapp:hover{
-background:#1ebe5d;
-}
-
-.github{
-background:#181717;
-color:white;
-}
-
-.github:hover{
-background:#000;
-}
-
-/* animação */
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* responsivo */
-
-@media (max-width:900px){
-
-body{
-width:100%;
-flex-direction:column;
-justify-content:flex-start;
-min-height:100dvh;
-padding-bottom:40px;
-}
-
-.container{
-flex-direction:column;
-text-align:center;
-gap:40px;
-padding:40px;
-width:100%;
-align-items:center;
-justify-content:center;
-}
-
-.botoes{
-justify-content:center;
-}
-
-.botao{
-min-width:140px;
-}
-
-.foto img{
-width:220px;
-}
-
-.info{
-transform:translateY(0);
-}
-
-h1{
-font-size:36px;
-}
-
-p{
-font-size:16px;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020617">
+    <title>M-O | Matheus Oliveira</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        html, body {
+            background: #020617;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #020617, #0f172a, #020617);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* --- MENU CIRCULAR M-O --- */
+        .menu-container {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 200;
+        }
+
+        .logo-mo-trigger {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #38bdf8;
+            background: rgba(2, 6, 23, 0.9);
+            color: #38bdf8;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .menu-container.active .logo-mo-trigger {
+            transform: rotate(45deg);
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 0; left: 0;
+            list-style: none;
+            transition: 0.5s;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .menu-container.active .menu-items {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .menu-item {
+            position: absolute;
+            top: 0; left: 0;
+            transition: 0.5s;
+            transition-delay: calc(0.1s * var(--i));
+        }
+
+        .menu-container.active .menu-item:nth-child(1) { transform: translateY(80px); }
+        .menu-container.active .menu-item:nth-child(2) { transform: translateX(80px); }
+        .menu-container.active .menu-item:nth-child(3) { transform: translate(60px, 60px); }
+
+        .menu-link {
+            width: 50px;
+            height: 50px;
+            background: #38bdf8;
+            color: #020617;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
+        }
+
+        .menu-link:hover { background: #fff; transform: scale(1.1); }
+
+        /* --- NOVO FUNDO DE PARTÍCULAS (CANVAS) --- */
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; /* Atrás do conteúdo */
+            pointer-events: none;
+        }
+
+        /* --- CONTAINER E TEXTO --- */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            padding: 60px;
+            max-width: 1200px;
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .texto { max-width: 520px; }
+
+        h1 {
+            font-size: 46px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg,#38bdf8,#0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        h2 { margin-bottom: 20px; color: #38bdf8; font-weight: 500; }
+        p { font-size: 18px; line-height: 1.7; color: #cbd5f5; margin-bottom: 15px; }
+
+        /* --- FOTO (ESTILO ORIGINAL PRESERVADO) --- */
+        .foto {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .foto img {
+            width: 270px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            transition: 0.4s;
+        }
+
+        .foto:hover img {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            color: #38bdf8;
+            padding: 16px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: 0.4s;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            font-weight: 600;
+        }
+
+        .foto:hover .info {
+            transform: translateY(0);
+        }
+
+        .info span {
+            display: block;
+            font-size: 14px;
+            margin-top: 4px;
+            color: #cbd5f5;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* --- BOTÕES --- */
+        .botoes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .botao {
+            display: flex; align-items: center; justify-content: center;
+            padding: 8px 14px; font-size: 14px; border-radius: 10px;
+            background: linear-gradient(90deg,#38bdf8,#0ea5e9);
+            color: #020617; font-weight: 600; text-decoration: none;
+            transition: 0.3s; box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+        }
+        .botao:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(56, 189, 248, 0.5); }
+        
+        /* INSTAGRAM ORIGINAL PRESERVADO */
+        .instagram {
+            background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+            color: white;
+        }
+
+        .github { background: #181717; color: white; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) {
+            .container { flex-direction: column; text-align: center; padding: 40px; width: 100%; }
+            .foto img { width: 220px; }
+            h1 { font-size: 36px; }
+            .botoes { justify-content: center; }
+            .info { transform: translateY(0); }
+            body { overflow-y: auto; }
+        }
+    </style>
 </head>
-
 <body>
 
+<div class="menu-container" id="techMenu">
+    <div class="logo-mo-trigger" onclick="toggleMenu()">M-0</div>
+    <ul class="menu-items">
+        <li class="menu-item" style="--i:1">
+            <a href="curriculo.pdf" target="_blank" class="menu-link" title="Currículo">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+        </li>
+        <li class="menu-item" style="--i:2">
+            <a href="https://github.com/TheusVicente?tab=repositories" target="_blank" class="menu-link" title="Projetos">
+                <i class="fas fa-code"></i>
+            </a>
+        </li>
+        <li class="menu-item" style="--i:3">
+            <a href="https://wa.me/5511916743110" target="_blank" class="menu-link" style="background: #25D366;">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<canvas id="particle-canvas"></canvas>
+
 <div class="container">
+    <div class="texto">
+        <h1 id="cypher-name" data-value="Matheus Oliveira">Matheus Oliveira</h1>
+        <h2>Estudante de Análise e Desenvolvimento de Sistemas</h2>
 
-<div class="texto">
+        <p>Olá! Sou estudante de Análise e Desenvolvimento de Sistemas e estou focado em aprender programação, lógica e desenvolvimento de software.</p>
+        
+        <p>Meu objetivo é conquistar uma oportunidade de estágio na área de tecnologia para aplicar meus conhecimentos e continuar aprendendo cada vez mais.</p>
 
-<h1>Matheus Oliveira</h1>
+        <p>Se quiser me conhecer melhor e acompanhar minha evolução e conhecer os projetos que estou desenvolvendo durante minha jornada na tecnologia, clique em um dos botões abaixo.</p>
 
-<h2>Estudante de Análise e Desenvolvimento de Sistemas</h2>
+        <div class="botoes">
+            <a class="botao" href="https://www.linkedin.com/in/matheus-oliveira-971b003a2" target="_blank">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+            <a class="botao instagram" href="https://www.instagram.com/otheus.oliveira" target="_blank">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a class="botao github" href="https://github.com/TheusVicente" target="_blank">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+        </div>
+    </div>
 
-<p>
-Olá! Sou estudante de Análise e Desenvolvimento de Sistemas e estou focado em aprender
-programação, lógica e desenvolvimento de software. Estou no início da minha jornada
-na área de tecnologia e busco constantemente evoluir minhas habilidades em
-Python, desenvolvimento web e resolução de problemas.
-</p>
-
-<p>
-Meu objetivo é conquistar uma oportunidade de estágio na área de tecnologia
-para aplicar meus conhecimentos e continuar aprendendo cada vez mais.
-</p>
-
-<p>
-Se quiser me conhecer melhor e acompanhar minha evolução e conhecer os projetos que estou desenvolvendo
-durante minha jornada na tecnologia, clique em um dos botões abaixo.
-</p>
-
-<div class="botoes">
-
-<a class="botao" href="https://www.linkedin.com/in/matheus-oliveira-971b003a2" target="_blank">
-<i class="fa-brands fa-linkedin"></i> LinkedIn
-</a>
-
-<a class="botao instagram" href="https://www.instagram.com/otheus.oliveira" target="_blank">
-<i class="fa-brands fa-instagram"></i> Instagram
-</a>
-
-<a class="botao whatsapp" href="https://wa.me/5511916743110" target="_blank">
-<i class="fa-brands fa-whatsapp"></i> WhatsApp
-</a>
-
-<a class="botao github" href="https://github.com/TheusVicente" target="_blank">
-<i class="fa-brands fa-github"></i> GitHub
-</a>
-
+    <div class="foto">
+        <img src="foto.jpg" alt="Foto de Matheus">
+        <div class="info">
+            Future Software Developer 💻
+            <span>Est. 2004</span>
+        </div>
+    </div>
 </div>
 
-</div>
+<script>
+    function toggleMenu() { document.getElementById('techMenu').classList.toggle('active'); }
 
-<div class="foto">
+    // Efeito Cypher
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let interval = null;
+    function runCypher() {
+        const target = document.querySelector("#cypher-name");
+        let iteration = 0;
+        clearInterval(interval);
+        interval = setInterval(() => {
+            target.innerText = target.innerText.split("").map((letter, index) => {
+                if(index < iteration) return target.dataset.value[index];
+                return letters[Math.floor(Math.random() * 26)];
+            }).join("");
+            if(iteration >= target.dataset.value.length) clearInterval(interval);
+            iteration += 1 / 3;
+        }, 30);
+    }
+    window.onload = runCypher;
+    document.querySelector("#cypher-name").onmouseover = runCypher;
 
-<img src="foto.jpg" alt="Foto de Matheus">
+    // --- NOVA LÓGICA DE PARTÍCULAS (MALHA DE DADOS / PLEXUS) ---
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
 
-<div class="info">
-Future Software Developer 💻
-<span>Est. 2004</span>
-</div>
+    // Rastreia o mouse
+    window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
 
-</div>
+    function init() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        particles = [];
+        // Define a densidade com base no tamanho da tela
+        const numberOfParticles = (canvas.width * canvas.height) / 9000;
+        for (let i = 0; i < numberOfParticles; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 1, // Velocidade X
+                vy: (Math.random() - 0.5) * 1, // Velocidade Y
+                size: Math.random() * 2 + 1
+            });
+        }
+    }
 
-</div>
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach((p, i) => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Rebate nas bordas
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            // Desenha o ponto (nó)
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.7)';
+            ctx.fill();
+
+            // Lógica de Conexão ( Plexus )
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+
+                // Se estiverem perto, desenha a linha
+                if (dist < 120) {
+                    ctx.beginPath();
+                    // A opacidade diminui com a distância
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist/120})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+            
+            // Interação opcional com o mouse (desenha linhas para o mouse)
+            if(mouse.x){
+                const dxMouse = p.x - mouse.x;
+                const dyMouse = p.y - mouse.y;
+                const distMouse = Math.sqrt(dxMouse*dxMouse + dyMouse*dyMouse);
+                if(distMouse < 150){
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${1 - distMouse/150})`;
+                    ctx.lineWidth = 1;
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            }
+        });
+        requestAnimationFrame(draw);
+    }
+
+    init();
+    draw();
+    window.onresize = init;
+</script>
 
 </body>
 </html>
